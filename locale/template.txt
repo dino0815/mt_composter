@@ -1,0 +1,3 @@
+# textdomain: composter
+Empty Barrel=
+Full Barrel=

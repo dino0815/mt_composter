@@ -1,5 +1,6 @@
 local path = minetest.get_modpath("composter")
-	
+local S = minetest.get_translator(minetest.get_current_modname())
+
 minetest.register_craft({
 	output = "composter:barrel_empty",
 	recipe = {
@@ -11,7 +12,7 @@ minetest.register_craft({
 -- ]]
 
 minetest.register_node("composter:barrel_empty", {
-	description = "a empty barrel",
+	description = S("Empty Barrel"),
 	drawtype = "nodebox",
     tiles = {  "default_wood.png" },
 	node_box = {
@@ -36,7 +37,7 @@ minetest.register_node("composter:barrel_empty", {
 			{-0.3750, -0.5000, -0.3750,  0.3750,  0.5000,  0.3750}, --Boden
 		}
 	},
-	
+
 	groups = {choppy = 2, oddly_breakable_by_hand = 1},
 	sounds = metal_sounds,
 
@@ -54,14 +55,14 @@ minetest.register_node("composter:barrel_empty", {
                 timer:start(10.5) -- in seconds
             else
                 minetest.chat_send_player(clicker:get_player_name(), "You need leaves!")
-                return itemstack    
+                return itemstack
 	        end
         end
     end,
 })
 
 minetest.register_node("composter:barrel_full", {
-	description = "a full barrel",
+	description = S("Full Barrel"),
 	drawtype = "nodebox",
     tiles = {
           "bucket_full_top.png",    -- TOP
@@ -101,7 +102,7 @@ minetest.register_node("composter:barrel_full", {
     on_construct = function(pos)
         minetest.chat_send_all("Create a full barrel!")
     end,
-    
+
     on_timer = function(pos)
         minetest.set_node(pos, { name = "composter:barrel_ready" })
         minetest.chat_send_all("The barrel is ready now!")
@@ -111,7 +112,7 @@ minetest.register_node("composter:barrel_full", {
 })
 
 minetest.register_node("composter:barrel_ready", {
-	description = "a full barrel",
+	description = S("Full Barrel"),
 	drawtype = "nodebox",
     tiles = {
           "bucket_ready_top.png", -- TOP
@@ -163,10 +164,9 @@ minetest.register_node("composter:barrel_ready", {
                 else
                     minetest.add_item(clicker:get_pos(), {name = "default:dirt"})
                 end
-				
+
         end
     end,
 })
 
 print("[MOD] composter loaded")
-
