@@ -1,0 +1,5 @@
+# textdomain: composter
+Empty Composter=
+You need leaves!=
+Full Composter=
+Ready Composter=
